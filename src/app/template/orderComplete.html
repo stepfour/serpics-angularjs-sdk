@@ -1,0 +1,143 @@
+<div class="container text-center" ng-init="order.paymethod=undefined">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="content-orderConfirm" ng-model="orderVm.order" >
+				<h1>
+					<b ng-show="orderVm.order.id" class="ng-cloak">Order Confirmed Successfully!</b>
+					<b ng-hide="orderVm.order.id" class="ng-cloak">Wait Confirmation Order...</b>
+				</h1>
+				<i ng-hide="orderVm.order.id" class="ng-cloak fa fa-cog fa-spin fa-3x" ></i>
+				<i ng-show="orderVm.order.id" class="ng-cloak fa fa-check"></i>
+				<p ng-show="orderVm.order.id" class="ng-cloak">your order was confirmed shortly receive an email list. Thank you.</p>
+				<p ng-hide="orderVm.order.id" class="ng-cloak">your order was waiting confirmation from payment server...</p>				
+			</div>
+			<div>
+			<h2 class="title text-center">Order Summary</h2>
+					<table class="table table-condensed">
+						<thead>
+							<tr class="cart_menu">
+								<td class="description">Product code</td>
+								<td class="quantity">Quantity</td>
+								<td class="price">Price</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in orderVm.order.orderItems">
+								<td class="cart_description">
+									<h4>
+										<p>{{item.product.code}}</p>
+									</h4>
+								</td>
+								<td class="cart_quantity">
+									<h4>
+										<p>{{item.quantity}}</p>
+									</h4>
+								</td>
+								<td class="cart_price">
+									<h4>
+										<p>&euro;{{item.skuNetPrice}}</p>
+									</h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>					
+			</div>
+			<div class="shopper-informations">
+				<div class="col-sm-12 clearfix">
+						<div class="bill-to">
+							<p>Pay Method</p>
+							<div class="form-description">{{orderVm.order.paymethod.name}}</div>
+						</div>
+				</div>
+				<div class="col-sm-12 clearfix">
+						<div class="bill-to">
+							<p>Ship Mode</p>
+							<div class="form-description">{{orderVm.order.shipmode.name}}</div>
+						</div>
+				</div>
+				<div class="col-sm-6 clearfix">
+						<div class="bill-to">
+							<p>Bill To</p>
+							<div class="form-one col-sm-3 clearfix">
+									<div class="form-description">Company Name</div>
+									<div class="form-description">First Name</div>
+									<div class="form-description">Last Name</div>
+									<div class="form-description">Address</div>
+									<div class="form-description">Address 2</div>
+									<div class="form-description">Street Number</div>
+									<div class="form-description">City</div>
+									<div class="form-description">Country</div>
+									<div class="form-description">District</div>
+									<div class="form-description">Zip / Postal Code</div>
+									<div class="form-description">Email</div>
+									<div class="form-description">Phone</div>
+									<div class="form-description">Mobile Phone</div>
+									<div class="form-description">Fax</div>
+									<div class="form-description">Notes</div>
+							</div>
+							<div class="form-one col-sm-3 clearfix">
+								<form>
+									<input type="text" name="company" ng-model="orderVm.order.billingAddress.company" readonly>
+									<input type="text" name="firstname" ng-model="orderVm.order.billingAddress.firstname" readonly>
+									<input type="text" name="lastname" ng-model="orderVm.order.billingAddress.lastname" readonly>
+									<input type="text" name="address1" ng-model="orderVm.order.billingAddress.address1" readonly>
+									<input type="text" name="address2" ng-model="orderVm.order.billingAddress.address2" readonly>
+									<input type="text" name="streetNumber" ng-model="orderVm.order.billingAddress.streetNumber" readonly>
+									<input type="text" name="city" ng-model="orderVm.order.billingAddress.city" readonly>
+									<input type="text" name="country" ng-model="orderVm.order.billingAddress.country.description" readonly>
+									<input type="text" name="district" ng-model="orderVm.order.billingAddress.district.description" readonly>
+									<input type="text" name="zipcode" ng-model="orderVm.order.billingAddress.zipcode" readonly>
+									<input type="text" name="email" ng-model="orderVm.order.billingAddress.email" readonly>
+									<input type="text" name="phone" ng-model="orderVm.order.billingAddress.phone" readonly>
+									<input type="text" name="mobile" ng-model="orderVm.order.billingAddress.mobile" readonly>
+									<input type="text" name="fax" ng-model="orderVm.order.billingAddress.fax" readonly>
+									<textarea name="field1" ng-model="orderVm.order.billingAddress.field1" rows="5"></textarea>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 clearfix">
+						<div class="bill-to">
+							<p>Ship To</p>
+							<div class="form-one col-sm-3 clearfix">
+									<div class="form-description">Company Name</div>
+									<div class="form-description">First Name</div>
+									<div class="form-description">Last Name</div>
+									<div class="form-description">Address</div>
+									<div class="form-description">Address 2</div>
+									<div class="form-description">Street Number</div>
+									<div class="form-description">City</div>
+									<div class="form-description">Country</div>
+									<div class="form-description">District</div>
+									<div class="form-description">Zip / Postal Code</div>
+									<div class="form-description">Email</div>
+									<div class="form-description">Phone</div>
+									<div class="form-description">Mobile Phone</div>
+									<div class="form-description">Fax</div>
+									<div class="form-description">Notes</div>
+							</div>
+							<div class="form-one col-sm-3 clearfix">
+								<form>
+									<input type="text" name="company" ng-model="order.shippingAddress.company" readonly>
+									<input type="text" name="firstname" ng-model="orderVm.order.shippingAddress.firstname" readonly>
+									<input type="text" name="lastname" ng-model="orderVm.order.shippingAddress.lastname" readonly>
+									<input type="text" name="address1" ng-model="orderVm.order.shippingAddress.address1" readonly>
+									<input type="text" name="address2" ng-model="orderVm.order.shippingAddress.address2" readonly>
+									<input type="text" name="streetNumber" ng-model="orderVm.order.shippingAddress.streetNumber" readonly>
+									<input type="text" name="city" ng-model="orderVm.order.shippingAddress.city" readonly>
+									<input type="text" name="country" ng-model="orderVm.order.shippingAddress.country.description" readonly>
+									<input type="text" name="region" ng-model="orderVm.order.shippingAddress.district.description" readonly>
+									<input type="text" name="zipcode" ng-model="orderVm.order.shippingAddress.zipcode" readonly>
+									<input type="text" name="email" ng-model="orderVm.order.shippingAddress.email" readonly>
+									<input type="text" name="phone" ng-model="orderVm.order.shippingAddress.phone" readonly>
+									<input type="text" name="mobile" ng-model="orderVm.order.shippingAddress.mobile" readonly>
+									<input type="text" name="fax" ng-model="orderVm.order.shippingAddress.fax" readonly>
+									<textarea name="field1" ng-model="orderVm.order.shippingAddress.field1" rows="5"></textarea>
+								</form>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
